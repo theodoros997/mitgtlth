@@ -9,8 +9,8 @@ COPY requirements-python.txt .
 
 RUN set -e; \
     apt update && \
-    apt install -y software-properties-common && \
-    add-apt-repository universe && \
+    apt install -y software-properties-common curl && \
+    echo "deb http://archive.ubuntu.com/ubuntu jammy universe" > /etc/apt/sources.list.d/universe.list && \
     apt update && \
     xargs -a requirements-apt.txt apt install -y
 
